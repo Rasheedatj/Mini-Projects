@@ -155,23 +155,23 @@ async function fetchAdvice() {
 
 function init() {
   switch (global.curretPage) {
-    case '/index.html':
+    case '/Mini-Projects/index.html':
       // setInterval(randomColor, 10000);
       break;
-    case '/Pages/clock.html':
+    case '/Mini-Projects/Pages/clock.html':
       console.log('cl');
       requestAnimationFrame(clock);
       document
         .querySelector('#save-btn')
         .addEventListener('click', downloadImg);
       break;
-    case '/Pages/advise.html':
+    case '/Mini-Projects/Pages/advise.html':
       changeBtn.addEventListener('click', fetchAdvice);
       break;
-    case '/Pages/map.html':
+    case '/Mini-Projects/Pages/map.html':
       console.log('map');
       break;
-    case '/Pages/todo-list.html':
+    case '/Mini-Projects/Pages/todo-list.html':
       console.log('todo');
       break;
   }
