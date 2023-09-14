@@ -132,7 +132,7 @@ function digitalClock() {
     document.getElementById('min').textContent = min;
   }
 
-  if (sec < 9) {
+  if (sec < 10) {
     document.getElementById('secs').textContent = `0${sec}`;
   } else {
     document.getElementById('secs').textContent = sec;
