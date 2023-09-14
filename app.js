@@ -38,7 +38,7 @@ function clock() {
   ctx.save();
   ctx.lineWidth = 14;
   ctx.beginPath();
-  ctx.arc(0, 0, 150, 0, Math.PI * 2);
+  ctx.arc(0, 0, 130, 0, Math.PI * 2);
   ctx.stroke();
   ctx.fill();
   ctx.restore();
@@ -47,8 +47,8 @@ function clock() {
   ctx.save();
   for (let i = 0; i < 12; i++) {
     ctx.beginPath();
-    ctx.moveTo(100, 0);
-    ctx.lineTo(120, 0);
+    ctx.moveTo(90, 0);
+    ctx.lineTo(110, 0);
     ctx.strokeStyle = lineColor.value;
     ctx.stroke();
     ctx.rotate(Math.PI / 6);
@@ -59,8 +59,8 @@ function clock() {
   ctx.save();
   for (let i = 0; i < 60; i++) {
     ctx.beginPath();
-    ctx.moveTo(110, 0);
-    ctx.lineTo(120, 0);
+    ctx.moveTo(100, 0);
+    ctx.lineTo(110, 0);
     ctx.strokeStyle = lineColor.value;
     ctx.lineWidth = 1;
     ctx.stroke();
@@ -75,7 +75,7 @@ function clock() {
   );
   ctx.beginPath();
   ctx.moveTo(-20, 0);
-  ctx.lineTo(80, 0);
+  ctx.lineTo(70, 0);
   ctx.strokeStyle = largeHandColor.value;
 
   ctx.stroke();
@@ -86,7 +86,7 @@ function clock() {
   ctx.rotate((Math.PI / 30) * min + (Math.PI / 1800) * sec);
   ctx.beginPath();
   ctx.moveTo(-20, 0);
-  ctx.lineTo(70, 0);
+  ctx.lineTo(60, 0);
   ctx.lineWidth = 3;
   ctx.strokeStyle = largeHandColor.value;
 
@@ -98,7 +98,7 @@ function clock() {
   ctx.rotate((Math.PI / 30) * sec);
   ctx.beginPath();
   ctx.moveTo(-20, 0);
-  ctx.lineTo(60, 0);
+  ctx.lineTo(50, 0);
   ctx.lineWidth = 2;
   ctx.strokeStyle = secondHandColor.value;
   ctx.stroke();
