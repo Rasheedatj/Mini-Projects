@@ -89,8 +89,12 @@ a {
 }
 
 /* ANIMATED CLOCK */
-#canvas {
+.clock main {
   border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .clock h1 {
@@ -104,9 +108,7 @@ a {
   gap: 2rem;
   background-color: #0d0d0d;
   padding: 1.5rem;
-  border-radius: 5px;
   color: white;
-  margin-top: 2rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 

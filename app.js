@@ -15,6 +15,7 @@ const borderColor = document.getElementById('border-color');
 const lineColor = document.getElementById('line-color');
 const largeHandColor = document.getElementById('large-hand-color');
 const secondHandColor = document.getElementById('second-hand-color');
+// const downloadableImage = document.querySelector('#clock_main');
 
 function clock() {
   const ctx = canva.getContext('2d');
