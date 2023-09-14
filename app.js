@@ -22,7 +22,6 @@ function clock() {
   const hr = now.getHours() % 12;
   const min = now.getMinutes();
   const sec = now.getSeconds();
-
   ctx.save();
   ctx.clearRect(0, 0, 400, 400);
   ctx.translate(200, 200);
@@ -113,6 +112,36 @@ function clock() {
   requestAnimationFrame(clock);
 }
 
+function digitalClock() {
+  const now = new Date();
+  const hr = now.getHours() % 12;
+  const min = now.getMinutes();
+  const sec = now.getSeconds();
+  const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'];
+
+  if (hr < 10) {
+    document.getElementById('hr').textContent = `0${hr}`;
+  } else {
+    document.getElementById('hr').textContent = hr;
+  }
+
+  if (min < 10) {
+    document.getElementById('min').textContent = `0${min}`;
+  } else {
+    document.getElementById('min').textContent = min;
+  }
+
+  if (sec < 9) {
+    document.getElementById('secs').textContent = `0${sec}`;
+  } else {
+    document.getElementById('secs').textContent = sec;
+  }
+
+  document.getElementById('day').textContent = daysOfWeek[now.getDay()];
+
+  requestAnimationFrame(digitalClock);
+}
+
 function downloadImg() {
   const dataURL = canva.toDataURL('image/png');
   const link = document.createElement('a');
@@ -159,11 +188,11 @@ function init() {
       // setInterval(randomColor, 10000);
       break;
     case '/Mini-Projects/Pages/clock.html':
-      console.log('cl');
       requestAnimationFrame(clock);
       document
         .querySelector('#save-btn')
         .addEventListener('click', downloadImg);
+      requestAnimationFrame(digitalClock);
       break;
     case '/Mini-Projects/Pages/advise.html':
       changeBtn.addEventListener('click', fetchAdvice);
