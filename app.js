@@ -25,7 +25,7 @@ function clock() {
   const sec = now.getSeconds();
   ctx.save();
   ctx.clearRect(0, 0, 400, 400);
-  ctx.translate(200, 200);
+  ctx.translate(200, 175);
   ctx.rotate(-Math.PI / 2);
 
   // default values
