@@ -183,10 +183,100 @@ async function fetchAdvice() {
   }
 }
 
+// MUSIC PLAYER
+const musicContainer = document.getElementById('music-container');
+const playBtn = document.getElementById('play');
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
+const shuffleBtn = document.getElementById('shuffle');
+const audio = document.getElementById('audio');
+const progress = document.getElementById('progress');
+const progressContainer = document.getElementById('progress-container');
+const title = document.getElementById('title');
+const cover = document.getElementById('cover');
+const volumeInput = document.getElementById('volume');
+
+const songs = ['hey', 'summer', 'ukulele'];
+let songIndex = 2;
+
+function loadSong(song) {
+  title.innerText = song;
+  audio.src = `./music/${song}.mp3`;
+  cover.src = `./images/${song}.jpg`;
+}
+
+function playSong() {
+  audio.play();
+  playBtn.querySelector('i').classList.replace('fa-play', 'fa-pause');
+  musicContainer.classList.add('play');
+}
+
+function pauseSong() {
+  audio.pause();
+  playBtn.querySelector('i').classList.replace('fa-pause', 'fa-play');
+  musicContainer.classList.remove('play');
+}
+
+function initSong() {
+  const isPlaying = musicContainer.classList.contains('play');
+
+  if (!isPlaying) {
+    playSong();
+  } else {
+    pauseSong();
+  }
+}
+
+function previousSong() {
+  songIndex--;
+  songIndex < 0 ? (songIndex = songs.length - 1) : null;
+  loadSong(songs[songIndex]);
+  playSong();
+}
+function nextSong() {
+  songIndex++;
+  songIndex > 2 ? (songIndex = 0) : null;
+  loadSong(songs[songIndex]);
+  playSong();
+}
+
+function progressUpdate(e) {
+  const { duration, currentTime } = e.srcElement;
+  progressPercent = (currentTime / duration) * 100;
+  progress.style.width = `${progressPercent}%`;
+}
+
+function setProgress(e) {
+  const width = this.clientWidth;
+  const offset = e.offsetX;
+  const duration = audio.duration;
+
+  audio.currentTime = (offset / width) * duration;
+}
+
+function shuffle() {
+  songIndex = getRandomNumber(songIndex);
+
+  loadSong(songs[songIndex]);
+  playSong();
+}
+
+function getRandomNumber(excludedNumber) {
+  let randomNumber;
+
+  do {
+    randomNumber = Math.floor(Math.random() * 3);
+  } while (randomNumber === excludedNumber);
+  return randomNumber;
+}
+
+function volume() {
+  audio.volume = volumeInput.value;
+}
+
 function init() {
   switch (global.curretPage) {
     case '/Mini-Projects/index.html':
-      // setInterval(randomColor, 10000);
       break;
     case '/Mini-Projects/Pages/clock.html':
       requestAnimationFrame(clock);
@@ -203,6 +293,16 @@ function init() {
       break;
     case '/Mini-Projects/Pages/todo-list.html':
       console.log('todo');
+      break;
+    case '/Mini-Projects/Pages/music_player.html':
+      loadSong(songs[songIndex]);
+      playBtn.addEventListener('click', initSong);
+      prevBtn.addEventListener('click', previousSong);
+      nextBtn.addEventListener('click', nextSong);
+      audio.addEventListener('timeupdate', progressUpdate);
+      progressContainer.addEventListener('click', setProgress);
+      shuffleBtn.addEventListener('click', shuffle);
+      volumeInput.addEventListener('change', volume);
       break;
   }
 }
