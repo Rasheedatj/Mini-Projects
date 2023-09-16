@@ -400,10 +400,14 @@ a {
 }
 
 input[type='range'] {
-  height: 4px;
   border-radius: 5px;
   accent-color: #fe8daa;
   caret-color: red;
   border: none;
+  height: 4px;
+  outline: none;
+}
+
+input[type='range']:focus {
   outline: none;
 }
